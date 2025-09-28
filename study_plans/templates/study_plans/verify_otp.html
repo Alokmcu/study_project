@@ -1,0 +1,37 @@
+{% extends "study_plans/dashboard_base.html" %}
+
+{% block title %}Verify Account - Study Tracks{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+          <h3 class="fw-bold text-center text-primary mb-3">Verify Your Account</h3>
+          <p class="text-center text-muted mb-4">
+            We have sent a verification code to your email. Please enter it below:
+          </p>
+
+          <form method="post">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+              <label for="verification_code" class="form-label">Verification Code</label>
+              <input type="text" class="form-control" id="verification_code" name="verification_code" placeholder="Enter verification code" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Verify</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .card {
+    border-radius: 1rem;
+  }
+</style>
+{% endblock %}

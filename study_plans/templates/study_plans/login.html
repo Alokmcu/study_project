@@ -1,0 +1,46 @@
+{% extends "study_plans/dashboard_base.html" %}
+{% block title %}Login - StudyTracks{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 mt-5">
+                <div class="card-body p-4">
+                    <h2 class="fw-light text-primary text-center mb-4">Login to Your Account</h2>
+
+                    <!-- Display error if exists -->
+                    {% if error %}
+                    <div class="alert alert-danger">{{ error }}</div>
+                    {% endif %}
+
+                    <form method="post">
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <input type="email" name="email" class="form-control" placeholder="Email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="password" name="password" class="form-control" placeholder="Password" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+
+                        <div class="text-center mt-3">
+                            Don’t have an account? 
+                            <a href="{% url 'signup' %}" class="text-primary fw-light">Sign Up Here</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border-radius: 12px;
+    }
+</style>
+{% endblock %}
