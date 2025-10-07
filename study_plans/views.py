@@ -121,6 +121,9 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from .models import StudyPlan, StudyDay
 import openai
+from django.http import JsonResponse
+import requests, os
+
 @login_required
 def create_plan_view(request):
     if request.method == "POST":
@@ -178,7 +181,8 @@ def create_plan_view(request):
 
         try:
             # OpenRouter / DeepSeek configuration
-            openai.api_key = getattr(settings, "API_KEY", None)
+        
+            openai.api_key = getattr(settings, "AI_KEY", None)
             openai.api_base = "https://openrouter.ai/api/v1"
 
             response = openai.ChatCompletion.create(

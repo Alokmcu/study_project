@@ -32,16 +32,13 @@ import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(BASE_DIR / ".env")
-
+load_dotenv()  
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "fallback-key")
-DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "").split(",")
+DEBUG = True
+ALLOWED_HOSTS = []
 
-API_KEY = os.getenv("API_KEY")
-
-
-# Application definition
+AI_KEY = os.getenv("api")
+print(AI_KEY)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
